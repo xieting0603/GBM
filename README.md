@@ -21,9 +21,7 @@ Offering code&commands for Micro-C and CUT&tag analysis
 This package is supported for *Linux*. The package has been tested on the following systems:
 + Linux: Ubuntu 16.04
 
-
 ### software Dependencies
-
 
 ```
 -bwa mem (v0.7.17;https://bio-bwa.sourceforge.net/)
@@ -47,9 +45,13 @@ This package is supported for *Linux*. The package has been tested on the follow
 ```
 
 
-## Power Curves
-- Recreated Figure 2 in https://arxiv.org/abs/1609.05148, with the addition of MDMR and Fast MGC
-![Power Curves](https://raw.githubusercontent.com/neurodata/mgcpy/master/power_curves_dimensions.png)
+# Installation Guide:
+
+### Instructions
+
+```
+All the above dependencies can be installed according the instructions themselves 
+```
 
 # License
 
