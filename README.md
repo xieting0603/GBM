@@ -1,17 +1,14 @@
 # GBM_SV_anaysis
 
 - [Overview](#overview)
-- [Documentation](#documentation)
 - [System Requirements](#system-requirements)
 - [Installation Guide](#installation-guide)
-- [Setting up the development environment](#setting-up-the-development-environment)
 - [License](#license)
-- [Issues](https://github.com/neurodata/mgcpy/issues)
+
 
 # Overview
 
-Offering code&commands for Micro-C and CUT&tag analysis
-``mgcpy`` aims to be a comprehensive independence testing package including commonly used independence tests and additional functionality such as two sample independence testing and a novel random forest-based independence test. These tests are not only included to benchmark MGC but to have a convenient location for users if they would prefer to utilize those tests instead. The package utilizes a simple class structure to enhance usability while also allowing easy extension of the package for developers. The package can be installed on all major platforms (e.g. BSD, GNU/Linux, OS X, Windows)from Python Package Index (PyPI) and GitHub.
+`` GBM_SV_anaysis`` Offering code&commands for Hi-C chromatin structure, SVs and neoloop identifications, CUT&tag and RNA-seq analysis, subtype classfication and circos plot etc.
 
 
 # System Requirements
@@ -50,7 +47,7 @@ This package is supported for *Linux*. The package has been tested on the follow
 ### Instructions
 
 ```
-All the above dependencies can be installed according the instructions themselves 
+All the above dependencies can be installed according to the instructions themselves 
 ```
 
 # License
