@@ -50,11 +50,33 @@ if=${ifs[${SLURM_ARRAY_TASK_ID}]}
 
 transdir=/home/uni08/txie/analysis/CP/8trans
 loc=/scratch1/users/txie/workplace_CP/coolers-hg38
+dir=/home/uni08/txie/analysis/CP/8trans/cnv
+
+################calculate cnv and do cnv-based normalization
+calculate-cnv -H $loc/$if::/resolutions/$res  \
+-g hg38 -e Arima  \
+--output $dir/${if%%-*}_$[res/1000]kb.1 --cachefolder $dir/  \
+--logFile $dir/cnv-calculation.log
+
+segment-cnv --cnv-file $dir/${if%%-*}_$[res/1000]kb.1   \
+--bins $res --nproc 16 \
+--output $dir/${if%%-*}_$[res/1000]kb.2 \
+--logFile $dir/cnv-seg.log
+
+correct-cnv -H $loc/$if::/resolutions/$res  --cnv-file $dir/${if%%-*}_$[res/1000]kb.2  \
+--nproc 16  -f  \
+--logFile $dir/cnv-norm.log
+
+sort -k1,1 -k2,2n  $dir/${if%%-*}_$[res/1000]kb.1  >$dir/${if%%-*}_$[res/1000]kb.1.sorted
+bedGraphToBigWig $dir/${if%%-*}_$[res/1000]kb.1.sorted  /scratch2/txie/data/hg38/hg38.chrom.sizes $dir/${if%%-*}_$[res/1000]kb.bw
+rm $dir/${if%%-*}_$[res/1000]kb.1.sorted
+
+
 ###########################detecte SVs and fusion events
 
 predictSV --hic-5k $loc/$if::/resolutions/5000 \
             --hic-10k  $loc/$if::/resolutions/10000 \
-            --hic-50k  $loc/$if::/resolutions/50000 -O ${if%%-*} -g hg38 --balance-type ICE --output-format full \
+            --hic-50k  $loc/$if::/resolutions/50000 -O ${if%%-*} -g hg38 --balance-type CNV --output-format full \
             --prob-cutoff-5k 0.8 --prob-cutoff-10k 0.8 --prob-cutoff-50k 0.99999
 
 merge-redundant-SVs --full-sv-files ${if%%-*}.CNN_SVs.5K_combined.txt -O ${if%%-*}.CNN_SVs.5K_combined.merge  --output-format NeoLoopFinder
