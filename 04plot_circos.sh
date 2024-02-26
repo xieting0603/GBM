@@ -43,10 +43,7 @@ if=${ifs[${SLURM_ARRAY_TASK_ID}]}
 sample=${if%%-*}
 
 
-###circos plot##########
 
-python 04generate_cnv.py $SVdir  ####### to convert neoloop CNV segment to circos format CNV #####################
-python 04ass2circos_type.py $SVdir   ########to convert EagleC SV to circos format SV##############
 
 
 source ~/miniconda3/etc/profile.d/conda.sh 
