@@ -18,21 +18,39 @@ coolerpath='/scratch1/users/txie/workplace_Pan/coolers-hg38'
 plotoutpath='/home/uni08/txie/analysis/Pan/analysis/SV'
 SVdir='/home/uni08/txie/analysis/Pan/analysis/SV'
 
-ifs=(Pan3T-Arima-allReps-filtered.mcool   \
-     Pan3T_ICM-Arima-allReps-filtered.mcool  \
-    Pan51T-Arima-allReps-filtered.mcool  \
-    Pan74T-Arima-allReps-filtered.mcool  \
-    Pan84T-Arima-allReps-filtered.mcool  \
-    Pan35T-Arima-allReps-filtered.mcool  \
-    Pan51T_ICM-Arima-allReps-filtered.mcool  \
-    Pan54T-Arima-allReps-filtered.mcool    \
-    Pan61T-Arima-allReps-filtered.mcool   \
-    Pan2T-Arima-allReps-filtered.mcool   \
-    Pan51T_T-Arima-allReps-filtered.mcool  \
-    Pan61T_T-Arima-allReps-filtered.mcool  \
-    Pan54T_T-Arima-allReps-filtered.mcool  \
-    Pan74T_T-Arima-allReps-filtered.mcool  \
-    Pan84T_T-Arima-allReps-filtered.mcool  )
+ifs=(GSC457B-Arima-allReps-filtered.mcool   \
+     GSC390B-Arima-allReps-filtered.mcool  \
+      GSC28-Arima-allReps-filtered.mcool  \
+      GSC275B-Arima-allReps-filtered.mcool  \
+      GSC275-Arima-allReps-filtered.mcool  \
+      GSC23p-Arima-allReps-filtered.mcool  \
+      GSC213R1-Arima-allReps-filtered.mcool  \
+      GSC208R1-Arima-allReps-filtered.mcool  \
+      GSC1-Arima-allReps-filtered.mcool  \
+      GSC163-Arima-allReps-filtered.mcool  \
+      GSC120-Arima-allReps-filtered.mcool  \
+      GSC148-Arima-allReps-filtered.mcool  \
+      GSC171-Arima-allReps-filtered.mcool  \
+      GSC181-Arima-allReps-filtered.mcool  \
+      GSC208M-Arima-allReps-filtered.mcool  \
+      GSC213M-Arima-allReps-filtered.mcool  \
+      GSC318-Arima-allReps-filtered.mcool  \
+      GSC323-Arima-allReps-filtered.mcool  \
+      GSC394B-Arima-allReps-filtered.mcool \
+      GSC412-Arima-allReps-filtered.mcool \
+      GSC450-Arima-allReps-filtered.mcool  \
+      GSC452C-Arima-allReps-filtered.mcool \
+      GSC452P-Arima-allReps-filtered.mcool  \
+      GSC61-Arima-allReps-filtered.mcool  \
+      GSC62-Arima-allReps-filtered.mcool  \
+      GSC83-Arima-allReps-filtered.mcool  \
+      GSC208R2-Arima-allReps-filtered.mcool  \
+      GSC213R2-Arima-allReps-filtered.mcool  \
+      GSC351-Arima-allReps-filtered.mcool  \
+      GSC486-Arima-allReps-filtered.mcool  \
+      GSC428-Arima-allReps-filtered.mcool  \
+      GSC402-Arima-allReps-filtered.mcool  \
+      astr-Arima-allReps-filtered.mcool)
 
 
 if=${ifs[${SLURM_ARRAY_TASK_ID}]}
@@ -42,9 +60,10 @@ if=${ifs[${SLURM_ARRAY_TASK_ID}]}
 
 sample=${if%%-*}
 
+###circos plot##########
 
-
-
+python 04generate_cnv.py $SVdir  ####### to convert neoloop CNV segment to circos format CNV #####################
+python 04ass2circos_type.py $SVdir   ########to convert EagleC SV to circos format SV##############
 
 source ~/miniconda3/etc/profile.d/conda.sh 
 conda activate base
